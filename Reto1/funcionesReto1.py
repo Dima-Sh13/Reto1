@@ -1,6 +1,5 @@
 def agregacionDeNotas(*notas):
      for nota in notas:
-        int(nota)
         listaNotasAlumno.append(nota)
 
 def sacarMedia(notasdelalumno):

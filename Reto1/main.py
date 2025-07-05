@@ -21,6 +21,7 @@ listaNotasAlumno = []
 while True:
     entrada = input(f"Elige una opcion:\n1. Agregar Alumno.\n2. Borrar Alumno.\n3. Consultar Alumnos Aprobados.\n4. Buscar alumno.\n5. Ver todos los alumnos\n6. Salir.\n ")
     entrada = entrada.lower()
+    
 
 
 
@@ -31,6 +32,10 @@ while True:
                 break
             
             notas = input("introduce las notas del alumno: ")
+            for i in notas:
+                if i == "-":
+                    print(f"Solo se aceptan numeros positivos")
+                    continue
             agregacionDeNotas(notas)
                 
 
@@ -43,7 +48,7 @@ while True:
     elif entrada == "2" or entrada == "borrar alumno":
         alumnoAEliminar = input("Inserte el nombre del alumno que quiera borrar: ")
         del estudiantes[alumnoAEliminar]
-        print( f"El alumno {alumnoAEliminar} ha sido borrado del registro.")
+        print( f"El alumno {alumnoAEliminar.upper()} ha sido borrado del registro.")
 
 
     elif entrada == "3" or entrada == "consultar alumnos aprobados":
@@ -57,13 +62,16 @@ while True:
 
     elif entrada == "4" or entrada == "buscar alumno":
         alumnoAconsultar = input("Introduzca el nombre del alumno: ")
-        print(f"Alumno: {alumnoAconsultar}.\nNotas: {estudiantes[alumnoAconsultar]}")
+        print(f"Alumno: {alumnoAconsultar.upper()}.\nNotas: {estudiantes[alumnoAconsultar]}")
 
     elif entrada == "5" or entrada == "ver todo los alumnos":
         for al, marks in estudiantes.items():
-            print(f"Alumno: {al}  Nota Media: {sacarMedia(marks)}")    
+            print(f"Alumno: {al.upper()}  Nota Media: {sacarMedia(marks)}")    
     
     elif entrada == "6" or entrada == "salir":
         print(f"Gracias por usar nuestro programa!\nSaliendo...")
         break
+
+    else:
+        print(f"Por favor introduzca una opcion valida.")
    
